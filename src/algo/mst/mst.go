@@ -1,4 +1,5 @@
 package mst
+// Minimum-Spanning-Tree
 
 import (
 	"algo/min_heap"
