@@ -34,6 +34,9 @@ func (mh *MinHeap) BuildMinHeap(ary []Comparable) {
 }
 
 func (mh *MinHeap) Pop() Comparable {
+	if mh.Empty() {
+		return nil
+	}
 	ary := mh.ary
 	mh.bound--
 	ary[0], ary[mh.bound] = ary[mh.bound], ary[0]
@@ -55,8 +58,13 @@ func (mh *MinHeap) Insert(c Comparable) {
 	view := mh.ary[:mh.bound]
 	for b:=mh.bound/2-1;;b=(b-1)/2 {
 		heapify(view, b)
+		// int((0-1)/2) = 0 so cannot use b >= 0 as guard in for loop...
 		if b == 0 {
 			break
 		}
 	}
+}
+
+func (mh *MinHeap) Empty() bool {
+	return mh.bound == 0
 }
