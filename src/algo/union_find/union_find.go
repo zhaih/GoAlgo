@@ -5,14 +5,14 @@ type UnionFind struct {
 	mem []int
 }
 
-func (uf *UnionFind) Init(n int)  {
+func (uf *UnionFind) Init(n int) {
 	uf.mem = make([]int, n)
-	for i,_ := range uf.mem {
+	for i, _ := range uf.mem {
 		uf.mem[i] = -1
 	}
 }
 
-func (uf *UnionFind) Union(a,b int) int {
+func (uf *UnionFind) Union(a, b int) int {
 	sa := uf.Find(a)
 	sb := uf.Find(b)
 	if sa == sb {
@@ -40,7 +40,7 @@ func (uf *UnionFind) Find(a int) int {
 	return set
 }
 
-func (uf *UnionFind) IsUnion(a,b int) bool {
+func (uf *UnionFind) IsUnion(a, b int) bool {
 	return uf.Find(a) == uf.Find(b)
 }
 

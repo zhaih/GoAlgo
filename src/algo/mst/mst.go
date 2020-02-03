@@ -1,4 +1,5 @@
 package mst
+
 // Minimum-Spanning-Tree
 
 import (
@@ -13,27 +14,26 @@ type MSTInput struct {
 }
 
 /**
- @return: matrix representation
- */
+@return: matrix representation
+*/
 func HandleMSTInput(in *MSTInput) [][]int {
 	ret := make([][]int, in.N)
-	for i,_ := range ret {
+	for i, _ := range ret {
 		ret[i] = make([]int, in.N)
 	}
-	for _,r := range in.Data {
+	for _, r := range in.Data {
 		ret[r[0]][r[1]] = r[2]
 		ret[r[1]][r[0]] = r[2]
 	}
 	return ret
 }
 
-
 func MST(in *MSTInput) []data.Edge {
 	mat := HandleMSTInput(in)
 	uf := union_find.UnionFind{}
 	uf.Init(len(mat))
 	ary := make([]min_heap.Comparable, 0)
-	for i,v := range mat[0] {
+	for i, v := range mat[0] {
 		if v != 0 {
 			ary = append(ary, data.Edge{
 				0,
@@ -52,8 +52,8 @@ func MST(in *MSTInput) []data.Edge {
 			continue
 		}
 		uf.Union(e.From, e.To)
-		for i,v := range mat[e.To] {
-			if v != 0 && !uf.IsUnion(e.To,i) {
+		for i, v := range mat[e.To] {
+			if v != 0 && !uf.IsUnion(e.To, i) {
 				mh.Insert(data.Edge{
 					From: e.To,
 					To:   i,

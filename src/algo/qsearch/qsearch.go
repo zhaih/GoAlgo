@@ -7,19 +7,19 @@ import "math/rand"
 // Actually need copy to not mess up original data
 // Could return index instead of data, but need copy mentioned above and
 // maybe a map to remember original position
-func Qsearch(rank,s int, ary []int) int {
+func Qsearch(rank, s int, ary []int) int {
 	if rank == 1 {
 		return ary[s]
 	}
 	ri := rand.Intn(len(ary) - s)
 	p := ary[s+ri]
-	ary[s+ri],ary[s] = ary[s],ary[s+ri]
+	ary[s+ri], ary[s] = ary[s], ary[s+ri]
 	j := s + 1
 	// partition to [p;>=p;<p]
-	for i:=s+1;i<len(ary);i++ {
+	for i := s + 1; i < len(ary); i++ {
 		if ary[i] >= p {
 			if i != j {
-				ary[i],ary[j] = ary[j],ary[i]
+				ary[i], ary[j] = ary[j], ary[i]
 			}
 			j++
 		}

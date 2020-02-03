@@ -5,7 +5,7 @@ type Comparable interface {
 }
 
 type MinHeap struct {
-	ary []Comparable
+	ary   []Comparable
 	bound int
 }
 
@@ -13,10 +13,10 @@ func heapify(ary []Comparable, root int) {
 	left := 2*root + 1
 	right := 2*root + 2
 	mini := root
-	if left < len(ary) && ary[left].Less(ary[mini]){
+	if left < len(ary) && ary[left].Less(ary[mini]) {
 		mini = left
 	}
-	if right < len(ary) && ary[right].Less(ary[mini]){
+	if right < len(ary) && ary[right].Less(ary[mini]) {
 		mini = right
 	}
 	if mini != root {
@@ -26,7 +26,7 @@ func heapify(ary []Comparable, root int) {
 }
 
 func (mh *MinHeap) BuildMinHeap(ary []Comparable) {
-	for i:=len(ary)/2-1;i >= 0; i-- {
+	for i := len(ary)/2 - 1; i >= 0; i-- {
 		heapify(ary, i)
 	}
 	mh.ary = ary
@@ -56,7 +56,7 @@ func (mh *MinHeap) Insert(c Comparable) {
 		return
 	}
 	view := mh.ary[:mh.bound]
-	for b:=mh.bound/2-1;;b=(b-1)/2 {
+	for b := mh.bound/2 - 1; ; b = (b - 1) / 2 {
 		heapify(view, b)
 		// int((0-1)/2) = 0 so cannot use b >= 0 as guard in for loop...
 		if b == 0 {
