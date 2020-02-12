@@ -58,3 +58,15 @@ func AssertNotNil(t testcommon, a interface{}) {
 		t.Error("Is Nil")
 	}
 }
+
+func BigInput(n int) []int {
+	ret := make([]int, n)
+	for i := 0; i < n; i++ {
+		ret[i] = i
+	}
+	return ret
+}
+
+func Plus(a, b int) int {
+	return a + b
+}
