@@ -70,3 +70,23 @@ func BigInput(n int) []int {
 func Plus(a, b int) int {
 	return a + b
 }
+
+func GenMat(m, n, fill int) [][]int {
+	ret := make([][]int, m)
+	for i := 0; i < m; i++ {
+		ret[i] = make([]int, n)
+		for j := 0; j < n; j++ {
+			ret[i][j] = fill
+		}
+	}
+	return ret
+}
+
+func GenEyeMat(m int) [][]int {
+	ret := make([][]int, m)
+	for i := 0; i < m; i++ {
+		ret[i] = make([]int, m)
+		ret[i][i] = 1
+	}
+	return ret
+}
